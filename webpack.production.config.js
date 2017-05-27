@@ -54,9 +54,10 @@ const productionConfig = [{
     ],
   },
   plugins: [
-    /*new CleanWebpackPlugin(['client/public'], {
-      exclude: ['jquery.min.js', 'react.min.js', 'react-dom.min.js', 'antd.min.css', 'antd.min.js'],
-    }),*/
+    new CleanWebpackPlugin(['client/public'], {
+      exclude: ['react.js', 'react-dom.js', 'antd.css', 'antd.js',
+        'react-router-dom.js', 'react-router.js', 'redux.js'],
+    }),
     new ExtractTextPlugin({
       filename: './[name].css',
     }),

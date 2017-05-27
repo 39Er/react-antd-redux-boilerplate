@@ -7,8 +7,8 @@ const webpack = require('webpack');
 
 const productionConfig = [{
   entry: {
-    index: path.join(__dirname, 'client/main.js'),
-    login: path.join(__dirname, 'client/login.jsx'),
+    index: path.join(__dirname, 'client/component/app.jsx'),
+    // login: path.join(__dirname, 'client/component/login.jsx'),
   },
   output: {
     filename: './[name].js',
@@ -54,9 +54,9 @@ const productionConfig = [{
     ],
   },
   plugins: [
-    new CleanWebpackPlugin(['client/public'], {
+    /*new CleanWebpackPlugin(['client/public'], {
       exclude: ['jquery.min.js', 'react.min.js', 'react-dom.min.js', 'antd.min.css', 'antd.min.js'],
-    }),
+    }),*/
     new ExtractTextPlugin({
       filename: './[name].css',
     }),

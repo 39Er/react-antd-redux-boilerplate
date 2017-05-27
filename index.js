@@ -8,6 +8,7 @@ const bodyParser = require('body-parser');
 const RedisStore = require('connect-redis')(session);
 const mongoose = require('mongoose');
 const redis = require('redis');
+const consolidate = require('consolidate');
 const config = require('./commonUtil').config;
 const logger = require('./commonUtil').logger;
 
@@ -18,7 +19,7 @@ const dburl = 'mongodb://' + config.get('mongoConfig.mongoHost')
   + ':' + config.get('mongoConfig.mongoPort') + '/' + config.get('mongoConfig.dbName');
 
 //  connect redis
-const redisClient = redis.createClient();
+const redisClient = redis.createClient(config.get('redisConfig'));
 redisClient.on('error', (err) => {
   logger.error(err);
   process.exit(1);
@@ -26,10 +27,12 @@ redisClient.on('error', (err) => {
 
 
 // view engine setup
-app.engine('html', require('ejs').renderFile);
-
+// app.engine('html', require('ejs').renderFile);
+app.engine('html', consolidate.ejs);
 app.set('views', path.join(__dirname, '/client/views'));
 app.set('view engine', 'html');
+// local variables for all views
+app.locals.env = isDev ? 'dev' : 'production';
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
@@ -68,7 +71,8 @@ if (isDev) {
 }
 app.use(express.static(path.join(__dirname, '/client/public')));
 // require('./server/routes')(app);
-// require('./client/routes')(app);
+require('./client/router/routes')(app);
+
 app.listen(port, (err) => {
   if (err) {
     logger.error(err);
@@ -82,5 +86,5 @@ app.listen(port, (err) => {
       process.exit(1);
     }
   });
-  logger.info('==> 🌎 Listening on port: %s', port);
+  logger.info('==> Listening on port: %s', port);
 });

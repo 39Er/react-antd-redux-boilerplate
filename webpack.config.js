@@ -10,13 +10,13 @@ const CleanWebpackPlugin = require('clean-webpack-plugin');
 let devConfig = {
   entry: {
     index: [
-      path.join(__dirname, 'client/main.js'),
+      path.join(__dirname, 'client/component/app.jsx'),
       hotMiddlewareScript,
     ],
-    login: [
-      path.join(__dirname, 'client/login.jsx'),
-      hotMiddlewareScript,
-    ],
+    /* login: [
+       path.join(__dirname, 'client/login.jsx'),
+       hotMiddlewareScript,
+     ],*/
   },
   output: {
     filename: './[name].js',
@@ -26,6 +26,9 @@ let devConfig = {
   externals: {
     react: 'React',
     'react-dom': 'ReactDOM',
+    'react-router-dom': 'ReactRouterDom',
+    'react-router': 'ReactRouter',
+    redux: 'Redux',
     antd: 'antd',
   },
   resolve: {
@@ -58,7 +61,8 @@ let devConfig = {
   },
   plugins: [
     new CleanWebpackPlugin(['client/public'], {
-      exclude: ['jquery.min.js', 'react.min.js', 'react-dom.min.js', 'antd.min.css', 'antd.min.js'],
+      exclude: ['react.js', 'react-dom.js', 'antd.css', 'antd.js',
+        'react-router-dom.js', 'react-router.js', 'redux.js'],
     }),
   ],
 };

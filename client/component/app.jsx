@@ -3,9 +3,10 @@
 import React from 'react';
 import { render } from 'react-dom';
 
-const App = () => {
-  console.log('aaaaaaaaa');
-  return <div>abss</div>;
-};
+class App extends React.Component {
+  render() {
+    return <div>aaa</div>;
+  }
+}
 
 render(<App />, document.getElementById('root'));

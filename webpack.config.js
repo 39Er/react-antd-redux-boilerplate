@@ -26,7 +26,7 @@ let devConfig = {
   externals: {
     react: 'React',
     'react-dom': 'ReactDOM',
-    'react-router-dom': 'ReactRouterDom',
+    'react-router-dom': 'ReactRouterDOM',
     'react-router': 'ReactRouter',
     redux: 'Redux',
     antd: 'antd',

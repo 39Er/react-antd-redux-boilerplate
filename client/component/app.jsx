@@ -2,11 +2,14 @@
 
 import React from 'react';
 import { render } from 'react-dom';
+import { BrowserRouter, Route } from 'react-router-dom';
+import { createStore } from 'redux';
+import { connect } from 'react-redux';
 
-class App extends React.Component {
-  render() {
-    return <div>aaa</div>;
-  }
-}
+import Home from './Home';
 
-render(<App />, document.getElementById('root'));
+render((
+  <BrowserRouter>
+    <Route path="/" component={Home} />
+  </BrowserRouter>
+), document.getElementById('root'));

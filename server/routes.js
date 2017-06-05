@@ -1,10 +1,8 @@
 'use strict';
 
+const user = require('./controller/userController');
+
 module.exports = function (app) {
-  app.post('/login', (req, res) => {
-    return res.send({
-      statusCode: '200',
-      result: 'login success',
-    });
-  });
+  app.post('/login', user.login);
+  app.post('/register', user.register);
 };

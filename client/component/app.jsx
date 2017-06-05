@@ -2,7 +2,7 @@
 
 import React from 'react';
 import { render } from 'react-dom';
-import { BrowserRouter, Route } from 'react-router-dom';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import { createStore } from 'redux';
 import { connect } from 'react-redux';
 
@@ -11,9 +11,9 @@ import Login from './Login';
 
 render((
   <BrowserRouter>
-    <div>
+    <Switch>
       <Route exact path="/login" component={Login} />
-      <Route exact path="/" component={Home} />
-    </div>
+      <Route path="/" component={Home} />
+    </Switch>
   </BrowserRouter>
 ), document.getElementById('root'));

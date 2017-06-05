@@ -5,6 +5,7 @@ import { Layout, Breadcrumb } from 'antd';
 
 import HeadBar from './HeadBar';
 import SideBar from './SideBar';
+import Routes from './Routes';
 import '../asserts/css/home.css';
 
 const { Header, Content } = Layout;
@@ -25,7 +26,7 @@ export default class Home extends React.Component {
               <Breadcrumb.Item>App</Breadcrumb.Item>
             </Breadcrumb>
             <Content id="content" className={'bg-white'}>
-              Content
+              <Routes />
             </Content>
           </Layout>
         </Layout>

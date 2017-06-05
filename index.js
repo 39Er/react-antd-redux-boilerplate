@@ -70,7 +70,7 @@ if (isDev) {
   app.use(webpackHotMiddleware(compiler));
 }
 app.use(express.static(path.join(__dirname, '/client/public')));
-// require('./server/routes')(app);
+require('./server/routes')(app);
 require('./client/router/routes')(app);
 
 app.listen(port, (err) => {

@@ -7,9 +7,13 @@ import { createStore } from 'redux';
 import { connect } from 'react-redux';
 
 import Home from './Home';
+import Login from './Login';
 
 render((
   <BrowserRouter>
-    <Route path="/" component={Home} />
+    <div>
+      <Route exact path="/login" component={Login} />
+      <Route exact path="/" component={Home} />
+    </div>
   </BrowserRouter>
 ), document.getElementById('root'));

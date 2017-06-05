@@ -55,6 +55,9 @@
             {
                 "ignorePureComponents": true
             }
+        ],
+        "react/prop-types": [
+            0
         ]
     },
     "env": {

@@ -1,3 +1,17 @@
-#root{
-  height: 100%
+#homeLayout {
+  height: 100%;
+  text-align: left;
+}
+.bg-white {
+  background: #fff;
+}
+#main{
+  flex-direction: row;
+}
+#rightLayout {
+  padding: 0 24px 24px;
+}
+#content {
+ padding: 24;
+ margin: 0;
 }

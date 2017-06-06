@@ -2,16 +2,24 @@
   height: 100%;
   text-align: left;
 }
+
 .bg-white {
   background: #fff;
 }
-#main{
+
+#main {
   flex-direction: row;
 }
+
 #rightLayout {
   padding: 0 24px 24px;
 }
+
 #content {
- padding: 24;
- margin: 0;
+  padding: 24;
+  margin: 0;
+}
+
+#breadcrumb {
+  margin: 12px 0;
 }

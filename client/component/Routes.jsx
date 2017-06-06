@@ -9,6 +9,7 @@ const routes = [
     path: '/',
     exact: true,
     component: () => <div>haha</div>,
+    // breadcrumbName: 'Home',
   },
 ];
 const Routes = () => {
@@ -21,6 +22,7 @@ const Routes = () => {
             path={route.path}
             exact={route.exact}
             component={route.component}
+            breadcrumbName={route.breadcrumbName}
           />
         );
       })}

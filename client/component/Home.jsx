@@ -1,11 +1,12 @@
 'use strict';
 
 import React from 'react';
-import { Layout, Breadcrumb } from 'antd';
+import { Layout } from 'antd';
 
 import HeadBar from './HeadBar';
 import SideBar from './SideBar';
 import Routes from './Routes';
+// import Breadcrumbs from './Breadcrumbs';
 import '../asserts/css/home.css';
 
 const { Header, Content } = Layout;
@@ -20,11 +21,7 @@ export default class Home extends React.Component {
         <Layout id="main">
           <SideBar />
           <Layout id="rightLayout">
-            <Breadcrumb style={{ margin: '12px 0' }}>
-              <Breadcrumb.Item>Home</Breadcrumb.Item>
-              <Breadcrumb.Item>List</Breadcrumb.Item>
-              <Breadcrumb.Item>App</Breadcrumb.Item>
-            </Breadcrumb>
+            {/* <Breadcrumbs />*/}
             <Content id="content" className={'bg-white'}>
               <Routes />
             </Content>

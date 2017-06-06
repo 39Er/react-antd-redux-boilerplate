@@ -1,7 +1,7 @@
 'use strict';
 
 import React from 'react';
-import { Form, Icon, Input, Button, Checkbox } from 'antd';
+import { Form, Icon, Input, Button } from 'antd';
 import '../asserts/css/login.css';
 
 import fetchJson from '../lib/fetchUtil';
@@ -9,18 +9,18 @@ import { error } from '../lib/modal';
 
 const FormItem = Form.Item;
 
-const LoginForm = (props) => {
-  let handleLogin = (event) => {
+const RegisterForm = (props) => {
+  let handleRegister = (event) => {
     event.preventDefault();
     props.form.validateFields((err, formData) => {
       if (err) {
         return console.log('login error:' + err);
       }
-      return fetchJson('/login', {
+      return fetchJson('/register', {
         body: formData,
       }).then((data) => {
         if (data.statusCode === '200') {
-          window.location.href = '/';
+          window.location.href = '/login';
         } else {
           error(data.statusCode, 'Error ', data.message);
         }
@@ -32,7 +32,7 @@ const LoginForm = (props) => {
   const { getFieldDecorator } = props.form;
   return (
     <Form
-      onSubmit={(event) => { handleLogin(event); }}
+      onSubmit={(event) => { handleRegister(event); }}
       className="login-form"
     >
       <FormItem>
@@ -57,22 +57,15 @@ const LoginForm = (props) => {
         )}
       </FormItem>
       <FormItem>
-        {getFieldDecorator('remember', {
-          valuePropName: 'checked',
-          initialValue: true,
-        })(
-          <Checkbox>Remember me</Checkbox>,
-        )}
-        <a className="login-form-forgot" href="">Forgot password</a>
         <Button type="primary" htmlType="submit" className="login-form-button">
-          Log in
+          Register
           </Button>
-        Or <a href="/register">register now!</a>
+        Or <a href="/login">I have account!</a>
       </FormItem>
     </Form>
   );
 };
 
-const Login = Form.create()(LoginForm);
-export default Login;
+const Register = Form.create()(RegisterForm);
+export default Register;
 

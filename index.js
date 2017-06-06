@@ -33,6 +33,8 @@ app.set('views', path.join(__dirname, '/client/views'));
 app.set('view engine', 'html');
 // local variables for all views
 app.locals.env = isDev ? 'dev' : 'production';
+
+// middleware
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
@@ -48,6 +50,7 @@ app.use(session({
   saveUninitialized: true,
   resave: false,
 }));
+
 if (isDev) {
   const webpack = require('webpack');
   const webpackDevMiddleware = require('webpack-dev-middleware');

@@ -9,15 +9,16 @@ exports.login = async function login(req, res) {
     let user = await User.findOne({
       username: req.body.username,
     }).exec();
+    console.log(user);
     if (!user) {
-      Promise.reject({
+      await Promise.reject({
         statusCode: '404',
         message: '用户不存在！',
       });
     }
     let encryptedPasswd = await encrypt(req.body.password, user.salt);
     if (encryptedPasswd !== user.password) {
-      Promise.reject({
+      await Promise.reject({
         statusCode: '503',
         message: '密码不正确！',
       });
@@ -28,7 +29,7 @@ exports.login = async function login(req, res) {
       result: 'login success',
     });
   } catch (e) {
-    logger.error(e.toString());
+    logger.error(e);
     let statusCode = e.statusCode ? e.statusCode : '500';
     let message = e.message ? e.message : e.toString();
     return res.send({
@@ -44,7 +45,7 @@ exports.register = async function register(req, res) {
       username: req.body.username,
     }).exec();
     if (query) {
-      Promise.reject({
+      await Promise.reject({
         statusCode: '501',
         message: '用户名已存在！',
       });

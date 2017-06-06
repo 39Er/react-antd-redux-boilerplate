@@ -4,7 +4,7 @@ const User = require('../model/user');
 const logger = require('../../commonUtil').logger;
 const { passwordEncrypt, encrypt } = require('../lib/passwordEncrypt');
 
-exports.login = async function login(req, res) {
+module.exports.login = async function login(req, res) {
   try {
     let user = await User.findOne({
       username: req.body.username,
@@ -39,7 +39,7 @@ exports.login = async function login(req, res) {
   }
 };
 
-exports.register = async function register(req, res) {
+module.exports.register = async function register(req, res) {
   try {
     let query = await User.findOne({
       username: req.body.username,

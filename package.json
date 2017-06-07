@@ -18,6 +18,10 @@
   ],
   "author": "",
   "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/39Er/react-antd-redux-boilerplate.git"
+  },
   "dependencies": {
     "antd": "^2.10.2",
     "bunyan": "^1.8.10",

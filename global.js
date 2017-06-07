@@ -64,6 +64,3 @@ let logger = bunyan.createLogger({
 });
 
 module.exports.logger = logger;
-
-
-

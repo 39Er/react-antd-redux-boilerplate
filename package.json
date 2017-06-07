@@ -8,7 +8,8 @@
     "dev": "cross-env NODE_ENV=dev nodemon  --ignore client --ignore test index | bunyan",
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "webpack --config webpack.production.config.js -p",
-    "production": "webpack --config webpack.production.config.js -p && cross-env NODE_ENV=production node index|bunyan"
+    "production": "webpack --config webpack.production.config.js -p && cross-env NODE_ENV=production node index|bunyan",
+    "log": "bunyan ./logs/error.log"
   },
   "keywords": [
     "react",
@@ -20,11 +21,12 @@
   "license": "ISC",
   "repository": {
     "type": "git",
-    "url": "https://github.com/39Er/react-antd-redux-boilerplate.git"
+    "url": "git+https://github.com/39Er/node_utils.git"
   },
   "dependencies": {
     "antd": "^2.10.2",
     "bunyan": "^1.8.10",
+    "bunyan-rotate-file-stream": "^1.1.1",
     "config": "^1.26.1",
     "connect-redis": "^3.3.0",
     "consolidate": "^0.14.5",

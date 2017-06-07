@@ -1,7 +1,7 @@
 'use strict';
 
 const User = require('../model/user');
-const logger = require('../../commonUtil').logger;
+const { logger } = require('../../global');
 const { passwordEncrypt, encrypt } = require('../lib/passwordEncrypt');
 
 module.exports.login = async function login(req, res) {
@@ -9,7 +9,6 @@ module.exports.login = async function login(req, res) {
     let user = await User.findOne({
       username: req.body.username,
     }).exec();
-    console.log(user);
     if (!user) {
       await Promise.reject({
         statusCode: '404',
@@ -30,11 +29,9 @@ module.exports.login = async function login(req, res) {
     });
   } catch (e) {
     logger.error(e);
-    let statusCode = e.statusCode ? e.statusCode : '500';
-    let message = e.message ? e.message : e.toString();
     return res.send({
-      statusCode: statusCode,
-      message: message,
+      statusCode: e.statusCode || '500',
+      message: e.message || e.toString(),
     });
   }
 };
@@ -61,12 +58,10 @@ module.exports.register = async function register(req, res) {
       username: user.username,
     });
   } catch (e) {
-    logger.error(e.toString());
-    let statusCode = e.statusCode ? e.statusCode : '500';
-    let message = e.message ? e.message : e.toString();
+    logger.error(e);
     return res.send({
-      statusCode: statusCode,
-      message: message,
+      statusCode: e.statusCode || '500',
+      message: e.message || e.toString(),
     });
   }
 };

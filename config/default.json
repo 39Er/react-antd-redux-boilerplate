@@ -6,9 +6,10 @@
     "dbName": "db"
   },
   "mainLog": {
-    "mainLogName": "mainLog",
-    "mainLogLevel": "debug",
-    "mainLogSrc": false
+    "name": "main",
+    "level": "debug",
+    "src": false,
+    "errorLogPath": "logs/error.log"
   },
   "redisConfig": {
     "host": "172.16.4.152",

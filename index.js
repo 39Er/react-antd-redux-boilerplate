@@ -9,8 +9,7 @@ const RedisStore = require('connect-redis')(session);
 const mongoose = require('mongoose');
 const redis = require('redis');
 const consolidate = require('consolidate');
-const config = require('./commonUtil').config;
-const logger = require('./commonUtil').logger;
+const { config, logger } = require('./global');
 
 const app = express();
 const isDev = process.env.NODE_ENV !== 'production';

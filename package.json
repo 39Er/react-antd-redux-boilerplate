@@ -21,7 +21,7 @@
   "license": "ISC",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/39Er/node_utils.git"
+    "url": "git+https://github.com/39Er/react-antd-redux-boilerplate.git"
   },
   "dependencies": {
     "antd": "^2.10.2",

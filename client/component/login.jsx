@@ -29,6 +29,11 @@ const LoginForm = (props) => {
       });
     });
   };
+  let getDefaultUsername = () => {
+    let username = document.cookie.indexOf('username') > -1 ?
+      document.cookie.split(';')[0].split('=')[1] : '';
+    return username;
+  };
   const { getFieldDecorator } = props.form;
   return (
     <Form
@@ -37,6 +42,7 @@ const LoginForm = (props) => {
     >
       <FormItem>
         {getFieldDecorator('username', {
+          initialValue: getDefaultUsername(),
           rules: [{ required: true, message: 'Please input your username!' }],
         })(
           <Input

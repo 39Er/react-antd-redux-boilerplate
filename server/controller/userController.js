@@ -23,6 +23,9 @@ module.exports.login = async function login(req, res) {
       });
     }
     req.session.user = user;
+    if (req.body.remember) {
+      res.cookie('username', user.username);
+    }
     return res.send({
       statusCode: '200',
       result: 'login success',

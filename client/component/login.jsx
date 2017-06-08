@@ -14,13 +14,13 @@ const LoginForm = (props) => {
     event.preventDefault();
     props.form.validateFields((err, formData) => {
       if (err) {
-        return console.log('login error:' + err);
+        return;
       }
-      return fetchJson('/login', {
+      fetchJson('/login', {
         body: formData,
       }).then((data) => {
         if (data.statusCode === '200') {
-          window.location.href = '/';
+          props.history.push('/');
         } else {
           error(data.statusCode, 'Error ', data.message);
         }

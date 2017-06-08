@@ -24,7 +24,9 @@ module.exports.login = async function login(req, res) {
     }
     req.session.user = user;
     if (req.body.remember) {
-      res.cookie('username', user.username);
+      res.cookie('username', user.username, {
+        maxAge: 30 * 24 * 60 * 60 * 1000,
+      });
     }
     return res.send({
       statusCode: '200',
